@@ -28,9 +28,9 @@ STATICFILES_DIRS = (
 SECRET_KEY = 'ici165yq(%(m1_uxw-+k+n5i72c&pqu(rw#nu#4v!evwk#f8-b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://breaking-better-app.herokuapp.com']
 
 
 # Application definition
