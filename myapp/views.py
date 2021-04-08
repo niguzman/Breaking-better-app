@@ -86,8 +86,10 @@ def character(request, name):
 def search(request):
     all_characters = []
     srch = request.GET['charac']
+    bol = False
     i = 0
     if requests.get('https://tarea-1-breaking-bad.herokuapp.com/api/characters?name='+srch+'&offset='+str(i)).status_code == 200:
+        bol = True
         response = requests.get('https://tarea-1-breaking-bad.herokuapp.com/api/characters?name='+srch+'&offset='+str(i)).json()
         while response:
             for j in response:
@@ -97,4 +99,4 @@ def search(request):
             if requests.get('https://tarea-1-breaking-bad.herokuapp.com/api/characters?name='+srch+'&offset='+str(i)).status_code != 200:
                 break
 
-    return render(request, 'myapp/search.html', {'match': all_characters})
+    return render(request, 'myapp/search.html', {'match': all_characters, 'bol':bol})
