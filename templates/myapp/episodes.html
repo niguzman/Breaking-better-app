@@ -41,14 +41,18 @@
             <br> <br>
             <div class="container">
                 <!-- Portfolio Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{name}}</h2>
-                <h2 class=" text-center text-uppercase text-secondary mb-0">Temporada {{number}}</h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
+                {% if episodes%}
+                    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{name}}</h2>
+                    <h2 class=" text-center text-uppercase text-secondary mb-0">Temporada {{number}}</h2>
+                    <!-- Icon Divider-->
+                    <div class="divider-custom">
+                        <div class="divider-custom-line"></div>
+                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                        <div class="divider-custom-line"></div>
+                    </div>
+                {% else %}
+                    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Hubo un problema con la API, intentalo de nuevo</h2>
+                {%endif%}
             </div>
             
             <div class="mx-auto" style="width: 220px;">

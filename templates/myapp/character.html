@@ -41,54 +41,61 @@
             <br> <br>
             <div class="container">
                 <!-- Portfolio Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{info.name}}</h2>
-                <br>
-                <center>
-                <img class="img-fluid rounded mb-5" src={{info.img}} alt="" width="304" height="236"/>
-                </center>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-            </div>
-        
-            <div class="mx-auto" style="width: 290px;">
-                <h6>Apodo: {{info.nickname}}</h6>
-                <h6>Ocupación:</h6>
-                {% for ep in info.occupation %}
-                    <h6>-- {{ep}}</h6>
-                {% endfor%}
-                <br>
-                <h6>Estado: {{info.status}}</h6>
-                {% if info.appearance%}
-                    <h6>Temporadas en Breaking Bad:</h6>
-                    <div class="text-center">
-                        {% for ep in info.appearance %}
-                            <a href="/breakingBad/{{ep}}">{{ep}}</a>
-                        {% endfor%}
-                    </div>
-                {% endif%}
-                {% if info.better_call_saul_appearance%}
-                    <h6>Temporadas en Better Call Saul:</h6>
-                    <div class="text-center">
-                        {% for ep in info.better_call_saul_appearance %}
-                            <a href="/betterCallSaul/{{ep}}">{{ep}}</a>
-                        {% endfor%}
-                    </div>
-                    
-                {% endif%}
-            </div>
-            <div class="mx-auto" style="width: 400px;">
-                {% if quotes %} 
+                {% if info%}
+                    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{info.name}}</h2>
                     <br>
-                    <h6>Citas:</h6>
-                    {% for i in quotes %}
-                        <p>{{i.series}} - {{i.quote}}</p>
-                    {% endfor%}
-                {% endif%}
+                    <center>
+                    <img class="img-fluid rounded mb-5" src={{info.img}} alt="" width="304" height="236"/>
+                    </center>
+                    <!-- Icon Divider-->
+                    <div class="divider-custom">
+                        <div class="divider-custom-line"></div>
+                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                        <div class="divider-custom-line"></div>
+                    </div>
+                {% else %}
+                    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Hubo un problema con la API, intentalo de nuevo</h2>
+                {%endif%}
             </div>
+            {% if info%}
+                <div class="mx-auto" style="width: 290px;">
+                    <h6>Apodo: {{info.nickname}}</h6>
+                    <h6>Ocupación:</h6>
+                    {% for ep in info.occupation %}
+                        <h6>-- {{ep}}</h6>
+                    {% endfor%}
+                    <br>
+                    <h6>Estado: {{info.status}}</h6>
+                    {% if info.appearance%}
+                        <h6>Temporadas en Breaking Bad:</h6>
+                        <div class="text-center">
+                            {% for ep in info.appearance %}
+                                <a href="/breakingBad/{{ep}}">{{ep}}</a>
+                            {% endfor%}
+                        </div>
+                    {% endif%}
+                    {% if info.better_call_saul_appearance%}
+                        <h6>Temporadas en Better Call Saul:</h6>
+                        <div class="text-center">
+                            {% for ep in info.better_call_saul_appearance %}
+                                <a href="/betterCallSaul/{{ep}}">{{ep}}</a>
+                            {% endfor%}
+                        </div>
+                        
+                    {% endif%}
+                </div>
+                <div class="mx-auto" style="width: 400px;">
+                    {% if quotes %} 
+                        <br>
+                        <h6>Citas:</h6>
+                        {% for i in quotes %}
+                            <p>{{i.series}} - {{i.quote}}</p>
+                        {% endfor%}
+                    {% endif%}
+                </div>
+            {% else %}
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Hubo un problema con la API, intentalo de nuevo</h2>
+            {%endif%}
         </section>
 
 
