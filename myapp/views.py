@@ -22,21 +22,25 @@ def index(request):
 
 def breakingBad(request, season):
     episodes = []
+    bol = False
     if requests.get('https://tarea-1-breaking-bad.herokuapp.com/api/episodes?series=Breaking+Bad').status_code == 200:
+        bol = True
         response = requests.get('https://tarea-1-breaking-bad.herokuapp.com/api/episodes?series=Breaking+Bad').json()
         for i in response:
             if i['season'] == str(season):
                 episodes.append(i)
-    return render(request, 'myapp/episodes.html', {'episodes': episodes, 'name': 'Breaking Bad', 'number':season})
+    return render(request, 'myapp/episodes.html', {'episodes': episodes, 'name': 'Breaking Bad', 'number':season}, 'bol':bol)
 
 def betterCallSaul(request, season):
     episodes = []
+    bol = False
     if requests.get('https://tarea-1-breaking-bad.herokuapp.com/api/episodes?series=Better+Call+Saul').status_code == 200:
+        bol = True
         response = requests.get('https://tarea-1-breaking-bad.herokuapp.com/api/episodes?series=Better+Call+Saul').json()
         for i in response:
             if i['season'] == str(season):
                 episodes.append(i)
-    return render(request, 'myapp/episodes.html', {'episodes': episodes, 'name': 'Better Call Saul', 'number':season})
+    return render(request, 'myapp/episodes.html', {'episodes': episodes, 'name': 'Better Call Saul', 'number':season, 'bol':bol})
 
 def detailsEpisode (request, episode_id):
     info = {}
